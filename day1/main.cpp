@@ -37,8 +37,40 @@ int main(){
     }
   }
 
-  std::cout<<"Total measurements: "<<measurements.size()<<std::endl;
+  int num_meas = measurements.size();
+
+  std::cout<<"Total measurements: "<<num_meas<<std::endl;
   std::cout<<"Number of increases: "<<incr<<std::endl;
+
+  //Part2: How many increases with the three measurement sliding window?
+  int sum_window1 = 0;
+  int sum_window2 = 0;
+  int win_incr = 0;
+
+  for (auto i=0; i<num_meas; i+=1){
+
+    //Check if the window size index excedes the number of measurements.
+    if (i+3 > num_meas || i+2 > num_meas || i+1 > num_meas){
+      break;
+    }
+
+    sum_window1 += measurements[i];
+    sum_window1 += measurements[i+1];
+    sum_window1 += measurements[i+2];
+
+    sum_window2 += measurements[i+1];
+    sum_window2 += measurements[i+2];
+    sum_window2 += measurements[i+3];
+
+    if (sum_window2 > sum_window1){
+      win_incr ++;
+    }
+
+    sum_window1 = 0;
+    sum_window2 = 0;
+  }
+
+  std::cout<<"Number of window increases: "<<win_incr<<std::endl;
 
   input.close();
 
