@@ -7,40 +7,40 @@
 
 int main(){
 
-	//Part1: How quickly does depth increase?
-	
-	// construct file stream 
-	std::ifstream input("input.txt");
+  //Part1: How quickly does depth increase?
 
-	int incr = 0;
-	int prev = 0;
-	int curr = 0;
+  // construct file stream
+  std::ifstream input("input.txt");
 
-	std::vector<int> measurements;
-	
-	// loop through the file stream
-	// cast string entires to integers
-	// push integers to vector
+  int incr = 0;
+  int prev = 0;
+  int curr = 0;
 
-	if (input.is_open()){
-		std::string line;
-		while (std::getline(input, line)){
+  std::vector<int> measurements;
 
-			curr = std::stoi(line);
-			
-			if (curr > prev && prev != 0){
-				incr++;
-			}
-			prev = curr;
-			measurements.push_back(curr);
+  // loop through the file stream
+  // cast string entires to integers
+  // push integers to vector
 
-		}
-	}
+  if (input.is_open()){
+    std::string line;
+    while (std::getline(input, line)){
 
-	std::cout<<"Total measurements: "<<measurements.size()<<std::endl;
-	std::cout<<"Number of increases: "<<incr<<std::endl;
+      curr = std::stoi(line);
 
-	input.close();
+      if (curr > prev && prev != 0){
+        incr++;
+      }
+      prev = curr;
+      measurements.push_back(curr);
 
-	return 0;
+    }
+  }
+
+  std::cout<<"Total measurements: "<<measurements.size()<<std::endl;
+  std::cout<<"Number of increases: "<<incr<<std::endl;
+
+  input.close();
+
+  return 0;
 }
