@@ -27,7 +27,7 @@ int main(){
 
   int depth = 0;
   int horiz = 0;
-
+  int aim = 0;
 
   if (input.is_open()){ std::string line;
     while (std::getline(input, line)){
@@ -37,18 +37,17 @@ int main(){
 
       if(action == "forward"){
         horiz += val;
+        depth = depth + (aim*val);
       }
 
       if(action == "up"){
-        depth += val;
+        aim -= val;
       }
 
       if(action == "down"){
-        depth -= val;
+        aim += val;
       }
-
     }
-
   }
 
   std::cout<<"Depth: "<<depth<<std::endl;
